@@ -1,4 +1,3 @@
-from django.conf.urls import url
 from django.test import TestCase, Client
 from django.contrib.auth import get_user_model
 from django.urls import reverse
@@ -20,7 +19,7 @@ class AdminSiteTest(TestCase):
     
     def test_user_listed(self):
         """Test that users are listed on user page"""
-        urls = reverse('admin:core_user_changelist')
+        url = reverse('admin:core_user_changelist')
         res = self.client.get(url)
         
         """"assertContains check if res status code is 200 &\
