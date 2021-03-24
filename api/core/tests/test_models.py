@@ -20,3 +20,8 @@ class ModelTests(TestCase):
         email = 'test@QBEAST.COM'
         user = get_user_model().objects.create_user(email, 'terfvcsd@ghj')
         self.assertEqual(user.email, email.lower())
+
+    def test_new_user_invalid_email(self):
+        """Test creating user with no email raises error"""
+        with self.assertRaises(ValueError):
+            get_user_model().objects.create_user(None, 'test123')
