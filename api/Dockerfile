@@ -13,5 +13,3 @@ RUN pip install -r requirements.txt
 RUN apk del .tmp-build-deps
 
 COPY . /usr/src/app
-
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
