@@ -24,6 +24,7 @@ services:
   
   db:
     container_name: 'postgres'
+    hostname: postgres
     image: postgres:10-alpine
     environment: 
       - POSTGRES_DB=app
