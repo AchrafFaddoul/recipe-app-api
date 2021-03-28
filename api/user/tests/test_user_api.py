@@ -113,15 +113,14 @@ class PublicUserApiTests(TestCase):
         self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
 
 
-
 class PrivateUserApiTests(TestCase):
     """Test API requests that require authentication"""
 
     def setUp(self):
         self.user = create_user(
-            email = 'test@qbeast.com',
-            password = 'Test@123++',
-            name = 'seb'
+            email='test@qbeast.com',
+            password='Test@123++',
+            name='seb'
         )
         self.client = APIClient()
         self.client.force_authenticate(user=self.user)
@@ -135,7 +134,7 @@ class PrivateUserApiTests(TestCase):
             'email': self.user.email,
             'name': self.user.name
         })
-    
+
     def test_post_me_not_allowed(self):
         """Test that POST is not allowedd on the me url"""
         res = self.client.post(ME_URL, {})
@@ -149,5 +148,5 @@ class PrivateUserApiTests(TestCase):
 
         self.user.refresh_from_db()
         self.assertEqual(self.user.name, payload['name'])
-        self.assertTrue(self.user.check_password(['password']))
+        self.assertTrue(self.user.check_password(payload['password']))
         self.assertEqual(res.status_code, status.HTTP_200_OK)
