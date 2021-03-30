@@ -29,11 +29,11 @@ class PrivateTagsApiTests(TestCase):
 
     def setUp(self):
         self.user = get_user_model().objects.create_user(
-            'test@qbeast.com',
-            'password@123++'
+            'test@londonappdev.com',
+            'password'
         )
         self.client = APIClient()
-        self.client = force_authenticate(self.user)
+        self.client.force_authenticate(self.user)
 
     def test_retrieve_tags(self):
         """Test retrieving tags"""
