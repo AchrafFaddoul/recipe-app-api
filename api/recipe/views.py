@@ -24,6 +24,7 @@ class TagViewSet(viewsets.GenericViewSet,
         """Create a new tag"""
         serializer.save(user=self.request.user)
 
+
 class IngredientViewSet(viewsets.GenericViewSet,
                         mixins.ListModelMixin):
     """Manage Ingredients in the database"""
