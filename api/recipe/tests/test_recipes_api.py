@@ -242,8 +242,8 @@ class RecipeImageUploadTests(TestCase):
         """Test returning recipes with specific tags"""
         recipe1 = sample_recipe(user=self.user, title='Rfissa')
         recipe2 = sample_recipe(user=self.user, title='Seffa')
-        tag1 = sample_tag(user=self.user, title='Vegan')
-        tag2 = sample_tag(user=self.user, title='Vegetarian')
+        tag1 = sample_tag(user=self.user, name='Vegan')
+        tag2 = sample_tag(user=self.user, name='Vegetarian')
         recipe1.tags.add(tag1)
         recipe2.tags.add(tag2)
         recipe3 = sample_recipe(user=self.user, title='Fish and chips')
