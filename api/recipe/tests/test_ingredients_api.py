@@ -83,18 +83,18 @@ class PrivateIngredientsApiTests(TestCase):
 
         self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)
 
-    def test_retrieve_ingredients_assigned_to_recipe(recipe):
+    def test_retrieve_ingredients_assigned_to_recipes(self):
         """Test filtering ingredients by those assigned to recipes"""
         ingredient1 = Ingredient.objects.create(
-            user=self.user, name='Apple'
+            user=self.user, name='Apples'
         )
         ingredient2 = Ingredient.objects.create(
             user=self.user, name='Turkey'
         )
         recipe = Recipe.objects.create(
             title='Apple crumble',
-            time_minutes=10,
-            price=10.00,
+            time_minutes=5,
+            price=10,
             user=self.user
         )
         recipe.ingredients.add(ingredient1)
@@ -116,7 +116,7 @@ class PrivateIngredientsApiTests(TestCase):
             price=10.00,
             user=self.user
         )
-        recipe1.Ingredients.add(ingredient)
+        recipe1.ingredients.add(ingredient)
         recipe2 = Recipe.objects.create(
             title='Eggs tost',
             time_minutes=10,
